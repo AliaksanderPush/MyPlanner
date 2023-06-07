@@ -5,3 +5,5 @@ export * from './MyDayScreen/MyDayScreen';
 export * from './ProfileScreen/ProfileScreen';
 export * from './SignInScreen/SignInScreen';
 export * from './SplashScreen/SplashScreen';
+export * from './WelcomeScreen/WelcomeScreen';
+export * from './SignUpScreen/SignUpScreen';

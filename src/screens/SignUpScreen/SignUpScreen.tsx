@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {styles} from './SignInScreen.styles';
+import {styles} from './SignUpScreen.styles';
 
-export const SignInScreen = () => {
+export const SignUpScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>SignInScreen</Text>
+      <Text>SignUpScreen</Text>
     </View>
   );
 };

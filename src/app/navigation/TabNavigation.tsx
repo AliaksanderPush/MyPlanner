@@ -19,8 +19,6 @@ import {TAbStackParams} from './types';
 import {SCREENS} from './screenConst';
 import {Pressable} from 'react-native';
 import {MenuIcon} from '@src/shared/ui';
-import {DrawerActions} from '@react-navigation/native';
-import {DrawerProps, DrawerStackParams} from './types';
 
 const ButtomStack = createBottomTabNavigator<TAbStackParams>();
 
@@ -36,7 +34,7 @@ export const TabScreenStack = ({navigation}: any): JSX.Element => {
         headerLeft: () => (
           <Pressable
             style={{marginLeft: 20}}
-            onPress={() => console.log('nav=>', navigation)}>
+            onPress={() => navigation.toggleDrawer()}>
             <MenuIcon />
           </Pressable>
         ),

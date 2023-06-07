@@ -6,7 +6,9 @@ import type {
 } from '@react-navigation/drawer';
 
 export type AuthStackParams = {
-  SignInScreen: undefined;
+  [SCREENS.AUTH_SIGNIN]: undefined;
+  [SCREENS.AUTH_WELCOME]: undefined;
+  [SCREENS.AUTH_SIGNUP]: undefined;
 };
 
 export type TAbStackParams = {

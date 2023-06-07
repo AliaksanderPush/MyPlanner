@@ -10,7 +10,7 @@ const HomeScreenStack = createNativeStackNavigator<GeneralStackParams>();
 export const GeneralNavigation = (): JSX.Element => {
   return (
     <HomeScreenStack.Navigator
-      initialRouteName={SCREENS.DRAWER_SCREEN_STACK}
+      initialRouteName={SCREENS.AUTH_SCREEN_STACK}
       screenOptions={{
         headerShown: false,
         headerTitleAlign: 'center',
