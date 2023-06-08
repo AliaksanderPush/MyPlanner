@@ -5,7 +5,7 @@ import {styles} from './AddTaskScreen.styles';
 export const AddTaskScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
+      <Text>AddTaskScreen</Text>
     </View>
   );
 };

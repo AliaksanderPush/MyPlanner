@@ -1,22 +1,29 @@
-import {NavigatorScreenParams} from '@react-navigation/native';
+import {NavigatorScreenParams, ParamListBase} from '@react-navigation/native';
+import {SCREENS} from './screenConst';
+import type {
+  DrawerScreenProps,
+  DrawerNavigationProp,
+} from '@react-navigation/drawer';
 
 export type AuthStackParams = {
   SignInScreen: undefined;
 };
 
 export type TAbStackParams = {
-  MyDayScreen: undefined;
-  CategoryScreen: undefined;
-  AddTaskScreen: undefined;
-  CalendarScreen: undefined;
-  ProfileScreen: undefined;
+  [SCREENS.TAB_MYDAY]: undefined;
+  [SCREENS.TAB_CATEGORY]: undefined;
+  [SCREENS.TAB_ADDTASK]: undefined;
+  [SCREENS.TAB_CALENDAR]: undefined;
+  [SCREENS.TAB_PROFILE]: undefined;
 };
 
 export type GeneralStackParams = {
-  DrawerScreenStack: NavigatorScreenParams<DrawerStackParams>;
-  AuthScreenStack: NavigatorScreenParams<AuthStackParams>;
+  [SCREENS.DRAWER_SCREEN_STACK]: NavigatorScreenParams<DrawerStackParams>;
+  [SCREENS.AUTH_SCREEN_STACK]: NavigatorScreenParams<AuthStackParams>;
 };
 export type DrawerStackParams = {
-  ProfileScreen: undefined;
-  TabScreenStack: NavigatorScreenParams<TAbStackParams>;
+  [SCREENS.TAB_PROFILE]: undefined;
+  [SCREENS.TAB_SCREEN_STACK]: NavigatorScreenParams<TAbStackParams>;
 };
+
+export type DrawerProps = DrawerNavigationProp<ParamListBase>;

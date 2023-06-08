@@ -1,26 +1,27 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SignInScreen} from '@src/screens';
 import {AuthScreenStack} from './AuthStackNavigation';
 import {DrawerScreenStack} from './DrawerNavigation';
+import {GeneralStackParams} from './types';
+import {SCREENS} from './screenConst';
 
-const HomeScreenStack = createNativeStackNavigator();
+const HomeScreenStack = createNativeStackNavigator<GeneralStackParams>();
 
-export const GeneralNavigation = () => {
+export const GeneralNavigation = (): JSX.Element => {
   return (
     <HomeScreenStack.Navigator
-      initialRouteName="DrawerScreenStack"
+      initialRouteName={SCREENS.DRAWER_SCREEN_STACK}
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerTitleAlign: 'center',
         headerShadowVisible: false,
       }}>
       <HomeScreenStack.Screen
-        name="AuthScreenStack"
+        name={SCREENS.AUTH_SCREEN_STACK}
         component={AuthScreenStack}
       />
       <HomeScreenStack.Screen
-        name="DrawerScreenStack"
+        name={SCREENS.DRAWER_SCREEN_STACK}
         component={DrawerScreenStack}
       />
     </HomeScreenStack.Navigator>

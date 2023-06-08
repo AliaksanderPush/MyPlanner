@@ -14,54 +14,66 @@ import {
   MyDayScreen,
   CategoryScreen,
 } from '@src/screens';
+import {colors} from '@src/app/styles';
+import {TAbStackParams} from './types';
+import {SCREENS} from './screenConst';
+import {Pressable} from 'react-native';
+import {MenuIcon} from '@src/shared/ui';
+import {DrawerActions} from '@react-navigation/native';
+import {DrawerProps, DrawerStackParams} from './types';
 
-const ButtomStack = createBottomTabNavigator();
+const ButtomStack = createBottomTabNavigator<TAbStackParams>();
 
-export const TabScreenStack = (): JSX.Element => {
+export const TabScreenStack = ({navigation}: any): JSX.Element => {
   return (
     <ButtomStack.Navigator
-      initialRouteName="MyDayScreen"
+      initialRouteName={SCREENS.TAB_MYDAY}
       screenOptions={{
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'red',
-        headerShown: false,
+        tabBarActiveTintColor: colors.textColor,
+        tabBarInactiveTintColor: colors.fonColor,
+        headerShown: true,
+        tabBarShowLabel: false,
+        headerLeft: () => (
+          <Pressable
+            style={{marginLeft: 20}}
+            onPress={() => console.log('nav=>', navigation)}>
+            <MenuIcon />
+          </Pressable>
+        ),
       }}>
       <ButtomStack.Screen
-        name="MyDayScreen"
+        name={SCREENS.TAB_MYDAY}
         component={MyDayScreen}
         options={{
           tabBarIcon: ({color}) => <CalendarIcon size={24} color={color} />,
         }}
       />
       <ButtomStack.Screen
-        name="CategoryScreen"
+        name={SCREENS.TAB_CATEGORY}
         component={CategoryScreen}
         options={{
-          title: 'Chat',
-          tabBarIcon: ({color}) => <ListIcon size={32} color={color} />,
+          tabBarIcon: ({color}) => <ListIcon size={24} color={color} />,
         }}
       />
       <ButtomStack.Screen
-        name="AddTaskScreen"
+        name={SCREENS.TAB_ADDTASK}
         component={AddTaskScreen}
         options={{
-          tabBarIcon: () => <AddIcon size={32} />,
+          tabBarIcon: () => <AddIcon size={24} />,
         }}
       />
       <ButtomStack.Screen
-        name="CalendarScreen"
+        name={SCREENS.TAB_CALENDAR}
         component={CalendarScreen}
         options={{
-          title: 'CalendarScreen',
-          tabBarIcon: ({color}) => <DateIcon size={32} color={color} />,
+          tabBarIcon: ({color}) => <DateIcon size={24} color={color} />,
         }}
       />
       <ButtomStack.Screen
-        name="Profile"
+        name={SCREENS.TAB_PROFILE}
         component={ProfileScreen}
         options={{
-          title: 'Sign',
-          tabBarIcon: ({color}) => <ProfileIcon size={32} color={color} />,
+          tabBarIcon: ({color}) => <ProfileIcon size={24} color={color} />,
         }}
       />
     </ButtomStack.Navigator>

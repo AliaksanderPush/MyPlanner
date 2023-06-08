@@ -4,3 +4,4 @@ export * from './icons/DateIcon';
 export * from './icons/ListIcon';
 export * from './icons/ProfileIcon';
 export * from './icons/DateIcon';
+export * from './icons/MenuIcon';
