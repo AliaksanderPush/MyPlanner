@@ -1,30 +1,43 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Image} from 'react-native';
 import {Block, Grid, Section} from 'react-native-responsive-layout';
+import {CustomButton, CustomText} from '@src/shared/ui';
+import {path} from '@src/app/config';
+import {WelcomProps} from './WelcomeScreen.props';
+import {SCREENS} from '@src/app/navigation';
 import {styles} from './WelcomeScreen.styles';
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({navigation}: WelcomProps) => {
+  const handleContinue = () => {
+    navigation.navigate(SCREENS.AUTH_MY_PLANNER);
+  };
+
   return (
     <Grid stretchable>
       <Section>
         <Block>
-          <View style={{height: 150}}>
-            <Text style={styles.text}>Header</Text>
+          <View style={styles.top_container}>
+            <CustomText font="robotoM" size={24}>
+              Welcome Back
+            </CustomText>
           </View>
         </Block>
       </Section>
       <Section stretch>
         <Block size="stretch">
-          <View
-            style={[{backgroundColor: '#91c2fd'}, styles.flexibleContainer]}>
-            <Text style={styles.text}>Content</Text>
+          <View style={styles.flexibleContainer}>
+            <Image style={styles.image} source={path.goals} />
           </View>
         </Block>
       </Section>
       <Section>
         <Block>
-          <View style={{height: 150}}>
-            <Text style={styles.text}>Footer</Text>
+          <View style={styles.bottom_container}>
+            <CustomButton
+              onPress={handleContinue}
+              text="CONTINUE"
+              appearance="containedXL"
+            />
           </View>
         </Block>
       </Section>

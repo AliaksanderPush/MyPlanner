@@ -1,14 +1,12 @@
 import {NavigatorScreenParams, ParamListBase} from '@react-navigation/native';
 import {SCREENS} from './screenConst';
-import type {
-  DrawerScreenProps,
-  DrawerNavigationProp,
-} from '@react-navigation/drawer';
+import type {DrawerNavigationProp} from '@react-navigation/drawer';
 
 export type AuthStackParams = {
   [SCREENS.AUTH_SIGNIN]: undefined;
   [SCREENS.AUTH_WELCOME]: undefined;
   [SCREENS.AUTH_SIGNUP]: undefined;
+  [SCREENS.AUTH_MY_PLANNER]: undefined;
 };
 
 export type TAbStackParams = {

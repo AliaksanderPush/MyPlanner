@@ -1,6 +1,11 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SignInScreen, WelcomeScreen, SignUpScreen} from '@src/screens';
+import {
+  SignInScreen,
+  WelcomeScreen,
+  SignUpScreen,
+  MyPlannerScreen,
+} from '@src/screens';
 import {AuthStackParams} from './types';
 import {SCREENS} from './screenConst';
 
@@ -17,6 +22,10 @@ export const AuthScreenStack = () => {
       <StackAuth.Screen name={SCREENS.AUTH_SIGNIN} component={SignInScreen} />
       <StackAuth.Screen name={SCREENS.AUTH_SIGNUP} component={SignUpScreen} />
       <StackAuth.Screen name={SCREENS.AUTH_WELCOME} component={WelcomeScreen} />
+      <StackAuth.Screen
+        name={SCREENS.AUTH_MY_PLANNER}
+        component={MyPlannerScreen}
+      />
     </StackAuth.Navigator>
   );
 };

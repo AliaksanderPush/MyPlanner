@@ -7,3 +7,4 @@ export * from './SignInScreen/SignInScreen';
 export * from './SplashScreen/SplashScreen';
 export * from './WelcomeScreen/WelcomeScreen';
 export * from './SignUpScreen/SignUpScreen';
+export * from './MyPlannerScreen/MyPlannerScreen';

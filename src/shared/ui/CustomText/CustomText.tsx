@@ -4,7 +4,6 @@ import {fonts} from '@src/shared/fonts';
 import {ITextProps} from './CustomText.props';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {colors} from '@src/app/styles';
-import {StyleSheet} from 'react-native';
 
 export const CustomText = ({
   font,

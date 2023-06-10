@@ -1,14 +1,19 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {AuthLayot} from '@src/widgets';
 import {Block, Grid, Section} from 'react-native-responsive-layout';
-import {styles} from './SignInScreen.styles';
-import {CustomButton, CustomInput} from '@src/shared/ui';
+import {styles} from './MyPlannerScreen.styles';
+import {CustomButton} from '@src/shared/ui';
+import {MyPlannerProps} from './MyPlannerScreen.props';
+import {SCREENS} from '@src/app/navigation';
 
-export const SignInScreen = () => {
-  const handleGoToSignIn = () => {};
+export const MyPlannerScreen = ({navigation}: MyPlannerProps): JSX.Element => {
+  const handleGoToSignIn = () => {
+    console.log('Wort');
+    navigation.navigate(SCREENS.AUTH_SIGNIN);
+  };
   const handleGoToSignUp = () => {
-    //
+    navigation.navigate(SCREENS.AUTH_SIGNUP);
   };
 
   return (
@@ -18,7 +23,11 @@ export const SignInScreen = () => {
           <Section>
             <Block>
               <View style={styles.button_box}>
-                <CustomInput />
+                <CustomButton
+                  onPress={handleGoToSignIn}
+                  text="SIGN IN"
+                  appearance="containedXL"
+                />
                 <CustomButton
                   onPress={handleGoToSignUp}
                   text="SIGN UP"
@@ -27,7 +36,6 @@ export const SignInScreen = () => {
               </View>
             </Block>
           </Section>
-
           <Section stretch>
             <Block>
               <View style={styles.flexibleBox}></View>
