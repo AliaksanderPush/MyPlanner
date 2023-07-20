@@ -10,3 +10,6 @@ export * from './CustomText/CustomText';
 export * from './CustomInput/CustomInput';
 export * from './icons/EmailIcon';
 export * from './icons/PasswordIcon';
+export * from './icons/YourPlanner';
+export * from './icons/HidePasswordIcon';
+export * from './icons/ViewPasswordIcon';

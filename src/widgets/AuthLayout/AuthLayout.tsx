@@ -6,6 +6,7 @@ import {path} from '@src/app/config';
 import {colors} from '@src/app/styles';
 import {IAuthLayout} from './AuthLayout.props';
 import {styles} from './AuthLayot.styles';
+import {YourPlanner} from '@src/shared/ui';
 
 export const AuthLayot = ({children, loading}: IAuthLayout): JSX.Element => {
   return (
@@ -27,7 +28,7 @@ export const AuthLayot = ({children, loading}: IAuthLayout): JSX.Element => {
       ) : (
         <View style={styles.container}>
           <View style={styles.top_container}>
-            <Image source={path.logo} />
+            <YourPlanner />
           </View>
           <View style={styles.bottom_container}>{children}</View>
         </View>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, {Path, G, Rect, Defs} from 'react-native-svg';
+import Svg, {Path, G, Rect, Defs, ClipPath} from 'react-native-svg';
 
 export function EmailIcon(props: {color?: string}): JSX.Element {
   const col = props.color || '#BEA6A1';
@@ -13,7 +13,7 @@ export function EmailIcon(props: {color?: string}): JSX.Element {
           stroke-linecap="round"
           stroke-linejoin="round"
         />
-        <path
+        <Path
           d="M2.5 5.83331L10 10.8333L17.5 5.83331"
           stroke={col}
           stroke-linecap="round"
@@ -21,9 +21,9 @@ export function EmailIcon(props: {color?: string}): JSX.Element {
         />
       </G>
       <Defs>
-        <clipPath id="clip0_242_5777">
+        <ClipPath id="clip0_242_5777">
           <Rect width="20" height="20" fill="white" />
-        </clipPath>
+        </ClipPath>
       </Defs>
     </Svg>
   );

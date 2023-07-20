@@ -5,4 +5,5 @@ export const colors = {
   contained: '#75AD38',
   elevated: '#00828C',
   whiteColor: '#FFFFFF',
+  iconColor: '#BEA6A1',
 };

@@ -3,25 +3,19 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  flexibleContainer: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  top_container: {
-    height: 180,
+
+  middle_container: {
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    marginVertical: 50,
   },
-  bottom_container: {
-    height: 150,
-    alignItems: 'center',
-  },
+
   image: {
     width: 359,
     height: 362,
+    resizeMode: 'contain',
   },
 });
