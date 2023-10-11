@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '@src/app/styles';
+import {colors, moderateScale, textScale} from '@src/app/styles';
 import {fonts} from '@src/shared/fonts';
 
 export const styles = StyleSheet.create({
@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   sizeXL: {
-    width: 324,
-    height: 45,
-    borderRadius: 45,
+    width: '100%',
+    height: moderateScale(45),
+    borderRadius: moderateScale(45),
   },
   containedXL: {
     backgroundColor: colors.contained,
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   containedXlText: {
     color: colors.whiteColor,
-    fontSize: 16,
+    fontSize: textScale(16),
     fontFamily: fonts.robotoB,
   },
 });

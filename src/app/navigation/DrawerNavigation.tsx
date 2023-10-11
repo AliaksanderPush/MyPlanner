@@ -1,9 +1,9 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {DrawerStackParams} from './types';
+import {DrawerStackParams} from '@src/app/types';
 import {ProfileScreen} from '@src/screens';
 import {TabScreenStack} from './TabNavigation';
-import {SCREENS} from './screenConst';
+import {SCREENS} from '@src/app/config/screens';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 

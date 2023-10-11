@@ -3,7 +3,7 @@ import {View, Image} from 'react-native';
 import {CustomButton, CustomText} from '@src/shared/ui';
 import {path} from '@src/app/config';
 import {WelcomProps} from './WelcomeScreen.props';
-import {SCREENS} from '@src/app/navigation';
+import {SCREENS} from '@src/app/config/screens';
 import {styles} from './WelcomeScreen.styles';
 
 export const WelcomeScreen = ({navigation}: WelcomProps) => {

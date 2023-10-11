@@ -5,9 +5,12 @@ import {
   WelcomeScreen,
   SignUpScreen,
   MyPlannerScreen,
+  ForgotPassScreen,
+  ConfirmCodeScreen,
+  RestorePassScreen,
 } from '@src/screens';
-import {AuthStackParams} from './types';
-import {SCREENS} from './screenConst';
+import {AuthStackParams} from '@src/app/types';
+import {SCREENS} from '@src/app/config/screens';
 
 const StackAuth = createNativeStackNavigator<AuthStackParams>();
 
@@ -22,6 +25,18 @@ export const AuthScreenStack = () => {
       <StackAuth.Screen name={SCREENS.AUTH_SIGNIN} component={SignInScreen} />
       <StackAuth.Screen name={SCREENS.AUTH_SIGNUP} component={SignUpScreen} />
       <StackAuth.Screen name={SCREENS.AUTH_WELCOME} component={WelcomeScreen} />
+      <StackAuth.Screen
+        name={SCREENS.AUTH_FORGOT_PASSWORD}
+        component={ForgotPassScreen}
+      />
+      <StackAuth.Screen
+        name={SCREENS.AUTH_CONFIRM_CODE}
+        component={ConfirmCodeScreen}
+      />
+      <StackAuth.Screen
+        name={SCREENS.AUTH_RESTORE_PASSWORD}
+        component={RestorePassScreen}
+      />
       <StackAuth.Screen
         name={SCREENS.AUTH_MY_PLANNER}
         component={MyPlannerScreen}

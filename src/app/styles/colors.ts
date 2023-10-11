@@ -6,4 +6,5 @@ export const colors = {
   elevated: '#00828C',
   whiteColor: '#FFFFFF',
   iconColor: '#BEA6A1',
+  extraColor: '#FF725E',
 };

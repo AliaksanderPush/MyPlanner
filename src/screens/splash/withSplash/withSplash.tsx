@@ -1,4 +1,4 @@
-import {SplashScreen} from '@src/screens';
+import {SplashScreen} from '@src/screens/splash/SplashScreen/SplashScreen';
 import {ISplashProps} from './withSplash.props';
 
 export function WithSplashScreen({

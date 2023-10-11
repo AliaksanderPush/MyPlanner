@@ -6,7 +6,7 @@ import {
   AddIcon,
   DateIcon,
   ProfileIcon,
-} from '@src/shared/ui';
+} from '@src/shared/ui/icons';
 import {
   AddTaskScreen,
   CalendarScreen,
@@ -15,10 +15,10 @@ import {
   CategoryScreen,
 } from '@src/screens';
 import {colors} from '@src/app/styles';
-import {TAbStackParams} from './types';
-import {SCREENS} from './screenConst';
 import {Pressable} from 'react-native';
-import {MenuIcon} from '@src/shared/ui';
+import {MenuIcon} from '@src/shared/ui/icons';
+import {TAbStackParams} from '@src/app/types';
+import {SCREENS} from '@src/app/config/screens';
 
 const ButtomStack = createBottomTabNavigator<TAbStackParams>();
 

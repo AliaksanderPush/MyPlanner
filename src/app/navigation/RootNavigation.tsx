@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {GeneralNavigation} from './GeneralNavigation';
-import {WithSplashScreen} from '@src/app/providers';
+import {WithSplashScreen} from '@src/screens/splash/withSplash/withSplash';
 
 export const RootNavigation = (): JSX.Element => {
   const [isAppReady, setIsAppReady] = useState<boolean>(true);

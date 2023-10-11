@@ -1,13 +1,11 @@
 import React from 'react';
-import {DimensionValue} from 'react-native/types';
 
 export interface ICustomTextInput {
-  label: string;
   value: string;
-  setValue: (event: string | React.ChangeEvent<Element>) => void;
-  onBlur?: () => void;
+  inputKey?: string | undefined;
+  onChangeText?(value: string, inputKey?: string): void;
   err?: string | undefined;
-  iconPos?: 'left' | 'right' | undefined;
-  typeIcon?: 'password' | 'email' | undefined;
-  w?: DimensionValue | undefined;
+  leftIcon: 'email' | 'lock';
+  rightIcon?: 'password' | undefined;
+  placeholder: string;
 }

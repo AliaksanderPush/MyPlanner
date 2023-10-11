@@ -2,8 +2,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AuthScreenStack} from './AuthStackNavigation';
 import {DrawerScreenStack} from './DrawerNavigation';
-import {GeneralStackParams} from './types';
-import {SCREENS} from './screenConst';
+import {GeneralStackParams} from '@src/app/types';
+import {SCREENS} from '@src/app/config/screens';
 
 const HomeScreenStack = createNativeStackNavigator<GeneralStackParams>();
 

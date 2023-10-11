@@ -4,7 +4,7 @@ import {AuthLayot} from '@src/widgets';
 import {styles} from './MyPlannerScreen.styles';
 import {CustomButton} from '@src/shared/ui';
 import {MyPlannerProps} from './MyPlannerScreen.props';
-import {SCREENS} from '@src/app/navigation';
+import {SCREENS} from '@src/app/config/screens';
 
 export const MyPlannerScreen = ({navigation}: MyPlannerProps): JSX.Element => {
   const handleGoToSignIn = () => {
