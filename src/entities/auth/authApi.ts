@@ -1,11 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {ILoginRequest, IRegistrRequest, ITokens} from '@src/app/types';
-import {setTokens} from '@src/shared/storage';
+import {BASE_URL} from '@src/shared/api';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://192.168.1.72:4000/`,
+    baseUrl: BASE_URL,
   }),
   endpoints: builder => ({
     registerUser: builder.mutation<ITokens, IRegistrRequest>({
@@ -19,7 +19,6 @@ export const authApi = createApi({
     }),
     loginUser: builder.mutation<ITokens, ILoginRequest>({
       query(data) {
-        console.log('query in=>', data);
         return {
           url: 'auth/login',
           method: 'POST',

@@ -8,8 +8,10 @@ import {
 import {getTokens, setTokens} from '../storage';
 import {ITokens} from '@src/app/types';
 
+export const BASE_URL = 'http://192.168.0.109:4000/';
+
 const baseQueryWithAuth = fetchBaseQuery({
-  baseUrl: 'http://192.168.1.72:4000/',
+  baseUrl: BASE_URL,
   prepareHeaders: async headers => {
     const token = await getTokens();
     console.log('token is fault!');

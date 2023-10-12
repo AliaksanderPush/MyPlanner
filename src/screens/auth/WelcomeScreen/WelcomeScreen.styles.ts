@@ -1,3 +1,4 @@
+import {moderateScale, moderateScaleVertical} from '@src/app/styles';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -5,12 +6,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: moderateScale(25),
   },
 
   middle_container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 50,
+    marginVertical: moderateScaleVertical(50),
   },
 
   image: {

@@ -10,6 +10,7 @@ import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './LogIn.styles';
 import {useLoginUserMutation} from '@src/entities/auth';
+import {setTokens} from '@src/shared/storage';
 
 export const LogIn = () => {
   const {
@@ -25,7 +26,9 @@ export const LogIn = () => {
 
   const sendData = (data: ILoginRequest) => {
     const {email, password} = data;
-    loginUser(data);
+    loginUser(data)
+      .then(payload => setTokens(payload.data))
+      .catch(e => console.log('some err=>', e));
   };
 
   const handleChange = (
