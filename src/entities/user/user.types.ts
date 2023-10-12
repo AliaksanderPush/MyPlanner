@@ -1,16 +1,5 @@
-export interface IUser {
-  email: string;
-  name: string;
-}
+import {IUser} from '@src/app/types';
 
-export interface ITokens {
-  accessToken: string;
-  refreshToken: string;
-}
-
-export interface IUserState {
+export type IUserState = {
   user: IUser | null;
-  tokens: ITokens | null;
-  loading: 'idle' | 'loading';
-  error: null | string;
-}
+};

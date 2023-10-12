@@ -1,16 +1,18 @@
 import {configureStore} from '@reduxjs/toolkit';
-import axios from 'axios';
 import {rootReducer} from './rootReducer';
+import {authApi} from '@src/entities/auth';
+import {userApi} from '@src/entities/user/model/userApi';
+import {api} from '@src/shared/api';
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    rootReducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+  },
   devTools: true,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      thunk: {
-        extraArgument: {client: axios},
-      },
-    }),
+    getDefaultMiddleware().concat(authApi.middleware, api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

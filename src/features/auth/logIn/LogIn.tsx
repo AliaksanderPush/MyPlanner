@@ -9,6 +9,7 @@ import {loginSchema} from '@src/app/validations';
 import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './LogIn.styles';
+import {useLoginUserMutation} from '@src/entities/auth';
 
 export const LogIn = () => {
   const {
@@ -18,13 +19,13 @@ export const LogIn = () => {
     formState: {errors},
     handleSubmit,
   } = useForm({resolver: yupResolver(loginSchema)});
-
+  const [loginUser, {isError, isSuccess}] = useLoginUserMutation();
+  console.log('is Errror =>', isError);
   const navigation = useNavigation<AuthStackProps>();
 
   const sendData = (data: ILoginRequest) => {
     const {email, password} = data;
-    const loginData = {email, password};
-    console.log('login=>', data);
+    loginUser(data);
   };
 
   const handleChange = (
