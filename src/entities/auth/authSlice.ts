@@ -2,12 +2,13 @@ import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {ITokens} from '@src/app/types';
 import type {AuthState} from './types';
 import {authApi} from './authApi';
-import {setTokens} from '@src/shared/storage';
 import {RootState} from '@src/app/store';
 
 const initialState: AuthState = {
   tokens: null,
 };
+
+const endpoint: any = authApi.endpoints;
 
 const authSlice = createSlice({
   name: '@@auth',
@@ -16,25 +17,47 @@ const authSlice = createSlice({
     setToken: (state: AuthState, action: PayloadAction<ITokens>) => {
       state.tokens = action.payload;
     },
+    cleatAuth: () => initialState,
   },
   extraReducers: builder => {
     builder
-      .addMatcher(authApi.endpoints.loginUser.matchPending, (state, action) => {
-        console.log('pending', action);
-      })
+      .addMatcher(
+        action => action.type.endsWith('/pending'),
+        action => {
+          console.log('pending', action);
+        },
+      )
       .addMatcher(
         authApi.endpoints.loginUser.matchFulfilled,
         (state, action: PayloadAction<ITokens>) => {
           state.tokens = action.payload;
         },
       )
-      .addMatcher(authApi.endpoints.loginUser.matchRejected, action => {
-        console.log('rejected', action);
-      });
+      .addMatcher(
+        authApi.endpoints.registerUser.matchFulfilled,
+        (state, action: PayloadAction<ITokens>) => {
+          state.tokens = action.payload;
+        },
+      )
+      .addMatcher(
+        authApi.endpoints.refresh.matchFulfilled,
+        (state, action: PayloadAction<ITokens>) => {
+          state.tokens = action.payload;
+        },
+      )
+
+      .addMatcher(endpoint.logout.matchFulfilled, state => {
+        state.tokens = null;
+      })
+      .addMatcher(
+        action => action.type.endsWith('/rejected'),
+        action => {
+          console.log(' auth rejected', action);
+        },
+      );
   },
 });
 
-export const {setToken} = authSlice.actions;
+export const {setToken, cleatAuth} = authSlice.actions;
 export const authReducer = authSlice.reducer;
-export const selectAuthInfo = (state: RootState) =>
-  state.rootReducer.auth.tokens;
+export const selectAuthInfo = (state: RootState) => state.auth.tokens;

@@ -10,3 +10,4 @@ export * from './auth/MyPlannerScreen/MyPlannerScreen';
 export * from './auth/ForgotPassScreen/ForgotPassScreen';
 export * from './auth/ConfirmCodeScreen/ConfirmCodeScreen';
 export * from './auth/RestorePassScreen/RestorePassScreen';
+export * from './loader/LoadingScreen/LoadingScreen';

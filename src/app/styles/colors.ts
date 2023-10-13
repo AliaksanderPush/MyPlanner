@@ -7,4 +7,6 @@ export const colors = {
   whiteColor: '#FFFFFF',
   iconColor: '#BEA6A1',
   extraColor: '#FF725E',
+  bluegradStart: '#00B8EA',
+  bluegraEnd: '#478EF0',
 };

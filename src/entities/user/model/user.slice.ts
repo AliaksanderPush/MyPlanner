@@ -6,7 +6,6 @@ import {
 import type {IUserState} from '../user.types';
 import {IUser} from '@src/app/types';
 import {userApi} from './userApi';
-import {setTokens} from '@src/shared/storage';
 
 const initialState: IUserState = {
   user: null,

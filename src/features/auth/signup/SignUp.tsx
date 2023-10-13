@@ -10,6 +10,8 @@ import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './SignUp.styles';
 import {Accept} from './ui/Accept';
+import {useRegisterUserMutation} from '@src/entities/auth';
+import {getTokens, setTokens} from '@src/shared/storage';
 
 export const SignUp = () => {
   const {
@@ -19,13 +21,16 @@ export const SignUp = () => {
     formState: {errors},
     handleSubmit,
   } = useForm({resolver: yupResolver(registrationSchema)});
-
+  const [registerUser, {isLoading, data: user, error}] =
+    useRegisterUserMutation();
   const navigation = useNavigation<AuthStackProps>();
 
+  console.log('registr err=> ', error);
+
   const sendData = (data: IRegistrRequest) => {
-    const {email, password, name, confirmPassword} = data;
-    const sendData = {email, password};
-    console.log('sign up=>', data);
+    registerUser(data)
+      .then((payload: any) => setTokens(payload.data))
+      .catch(e => console.log('some registr err=>', e));
   };
 
   const handleChange = (

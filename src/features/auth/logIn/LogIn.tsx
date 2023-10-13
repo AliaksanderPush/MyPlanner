@@ -3,7 +3,7 @@ import {Pressable, View} from 'react-native';
 import {CustomButton, CustomInput, CustomText} from '@src/shared/ui';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {colors} from '@src/app/styles';
-import {AuthStackProps, ILoginRequest} from '@src/app/types';
+import {AuthStackProps, ILoginRequest, ITokens} from '@src/app/types';
 import {EAuthForm, SCREENS} from '@src/app/config';
 import {loginSchema} from '@src/app/validations';
 import {useForm} from 'react-hook-form';
@@ -20,14 +20,14 @@ export const LogIn = () => {
     formState: {errors},
     handleSubmit,
   } = useForm({resolver: yupResolver(loginSchema)});
-  const [loginUser, {isError, isSuccess}] = useLoginUserMutation();
-  console.log('is Errror =>', isError);
+  const [loginUser, {error, isLoading}] = useLoginUserMutation();
+  console.log('is Errror =>', error);
   const navigation = useNavigation<AuthStackProps>();
 
   const sendData = (data: ILoginRequest) => {
     const {email, password} = data;
     loginUser(data)
-      .then(payload => setTokens(payload.data))
+      .then((payload: any) => setTokens(payload.data))
       .catch(e => console.log('some err=>', e));
   };
 
