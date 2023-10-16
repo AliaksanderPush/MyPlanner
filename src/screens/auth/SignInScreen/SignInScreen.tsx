@@ -4,7 +4,7 @@ import {LogIn} from '@src/features';
 
 export const SignInScreen = () => {
   return (
-    <AuthLayot loading={false}>
+    <AuthLayot>
       <LogIn />
     </AuthLayot>
   );

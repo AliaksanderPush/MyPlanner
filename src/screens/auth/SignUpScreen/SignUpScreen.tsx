@@ -4,7 +4,7 @@ import {SignUp} from '@src/features';
 
 export const SignUpScreen = () => {
   return (
-    <AuthLayot loading={false}>
+    <AuthLayot>
       <SignUp />
     </AuthLayot>
   );

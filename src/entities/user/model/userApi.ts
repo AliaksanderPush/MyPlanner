@@ -11,6 +11,15 @@ export const userApi = api.injectEndpoints({
         };
       },
     }),
+    update: builder.mutation<IUser, {email: string}>({
+      query(body) {
+        return {
+          url: 'user/update',
+          method: 'POST',
+          body,
+        };
+      },
+    }),
   }),
 });
 export const {useFetchUserQuery, useLazyFetchUserQuery} = userApi;

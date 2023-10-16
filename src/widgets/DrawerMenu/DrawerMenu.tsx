@@ -4,8 +4,8 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {colors} from '@src/app/styles';
-import React, {useState} from 'react';
-import {Pressable, View} from 'react-native';
+import React from 'react';
+import {Pressable} from 'react-native';
 import Logout from '@src/shared/assets/icons/logout.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './DrawerMenu.styles';
@@ -16,25 +16,21 @@ import {removeToken} from '@src/shared/storage';
 import {clearUser} from '@src/entities/user';
 
 export const DrawerMenu = (props: DrawerContentComponentProps): JSX.Element => {
-  const token = useAppSelector(selectAuthInfo);
+  const {tokens} = useAppSelector(selectAuthInfo);
   const dispatch = useAppDispatch();
-  const [show, setShow] = useState<boolean>(false);
   const [logout, {error, isLoading}] = useLogoutMutation();
 
   const handleClose = () => {
     props.navigation.closeDrawer();
   };
 
-  console.log('logout error=>', error);
-
   const handleLogout = async () => {
-    if (token?.refreshToken) {
-      console.log('logout work');
-      logout({refreshToken: token?.refreshToken})
+    if (tokens?.refreshToken) {
+      logout({refreshToken: tokens?.refreshToken})
         .then(() => removeToken())
+        .then(() => dispatch(cleatAuth()))
         .catch(e => console.log('stor err=>', e));
     }
-    dispatch(cleatAuth());
     dispatch(clearUser());
   };
 

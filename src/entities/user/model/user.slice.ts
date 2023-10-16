@@ -25,11 +25,22 @@ const userSlice = createSlice({
       .addMatcher(
         userApi.endpoints.fetchUser.matchFulfilled,
         (state, action: PayloadAction<IUser>) => {
-          console.log('get user=>', action.payload);
           state.user = action.payload;
         },
       )
       .addMatcher(userApi.endpoints.fetchUser.matchRejected, action => {
+        console.log('rejected', action);
+      })
+      .addMatcher(userApi.endpoints.update.matchPending, (state, action) => {
+        console.log('pending', action);
+      })
+      .addMatcher(
+        userApi.endpoints.update.matchFulfilled,
+        (state, action: PayloadAction<IUser>) => {
+          state.user = action.payload;
+        },
+      )
+      .addMatcher(userApi.endpoints.update.matchRejected, action => {
         console.log('rejected', action);
       });
   },

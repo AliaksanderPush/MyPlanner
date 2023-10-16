@@ -6,7 +6,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react';
-import {getTokens, removeToken, setTokens} from '../storage';
+import {removeToken, setTokens} from '../storage';
 import {ITokens} from '@src/app/types';
 
 export const BASE_URL = 'http://192.168.1.72:4000/';

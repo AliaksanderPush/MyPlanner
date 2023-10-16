@@ -15,7 +15,7 @@ export const MyPlannerScreen = ({navigation}: MyPlannerProps): JSX.Element => {
   };
 
   return (
-    <AuthLayot loading={false}>
+    <AuthLayot>
       <View style={styles.button_container}>
         <View style={styles.button_box}>
           <CustomButton

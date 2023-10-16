@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Animated, Pressable, View} from 'react-native';
-import {CustomButton, CustomInput, CustomText} from '@src/shared/ui';
-import {yupResolver} from '@hookform/resolvers/yup';
+import {CustomButton, CustomText} from '@src/shared/ui';
 import {colors} from '@src/app/styles';
 import {AuthStackProps} from '@src/app/types';
-import {EAuthForm, SCREENS} from '@src/app/config';
-import {forgotPassSchema} from '@src/app/validations';
-import {useForm} from 'react-hook-form';
+import {SCREENS} from '@src/app/config';
 import {useNavigation} from '@react-navigation/native';
 import {
   CodeField,
@@ -93,7 +90,6 @@ export const ConfirmCode = () => {
   };
 
   const sendData = () => {
-    console.log('sent code=>', value);
     navigation.navigate(SCREENS.AUTH_RESTORE_PASSWORD);
   };
 

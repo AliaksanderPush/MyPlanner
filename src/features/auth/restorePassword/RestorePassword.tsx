@@ -8,6 +8,8 @@ import {changePasswordSchema} from '@src/app/validations';
 import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './RestorePassword.styles';
+import {selectAuthInfo, useRestorePasswordMutation} from '@src/entities/auth';
+import {useAppSelector} from '@src/app/store';
 
 export const RestorePassword = () => {
   const {
@@ -17,12 +19,21 @@ export const RestorePassword = () => {
     formState: {errors},
     handleSubmit,
   } = useForm({resolver: yupResolver(changePasswordSchema)});
-
+  const [restorePassword, {error, isError, isLoading}] =
+    useRestorePasswordMutation();
+  const {code, email} = useAppSelector(selectAuthInfo);
   const navigation = useNavigation<AuthStackProps>();
 
   const sendData = (data: IRestPassRequest) => {
-    console.log('restore pass=>', data);
-    navigation.navigate(SCREENS.AUTH_SIGNIN);
+    const userData = {
+      email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+      code,
+    };
+    restorePassword(userData).then(() =>
+      navigation.navigate(SCREENS.AUTH_SIGNIN),
+    );
   };
 
   const handleChange = (

@@ -1,13 +1,11 @@
 import React from 'react';
 import {View, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {ActivityIndicator} from 'react-native-paper';
-import {colors} from '@src/app/styles';
 import {IAuthLayout} from './AuthLayout.props';
 import {styles} from './AuthLayot.styles';
 import {YourPlanner} from '@src/shared/ui/icons';
 
-export const AuthLayot = ({children, loading}: IAuthLayout): JSX.Element => {
+export const AuthLayot = ({children}: IAuthLayout): JSX.Element => {
   return (
     <KeyboardAwareScrollView
       enableOnAndroid={true}
@@ -16,22 +14,12 @@ export const AuthLayot = ({children, loading}: IAuthLayout): JSX.Element => {
         flex: 1,
         position: 'relative',
       }}>
-      {loading ? (
-        <View style={styles.loading_container}>
-          <ActivityIndicator
-            size="large"
-            animating={true}
-            color={colors.contained}
-          />
+      <View style={styles.container}>
+        <View style={styles.top_container}>
+          <YourPlanner />
         </View>
-      ) : (
-        <View style={styles.container}>
-          <View style={styles.top_container}>
-            <YourPlanner />
-          </View>
-          <View style={styles.bottom_container}>{children}</View>
-        </View>
-      )}
+        <View style={styles.bottom_container}>{children}</View>
+      </View>
     </KeyboardAwareScrollView>
   );
 };

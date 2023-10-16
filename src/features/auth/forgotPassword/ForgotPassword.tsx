@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Pressable, View} from 'react-native';
-import {CustomButton, CustomInput, CustomText} from '@src/shared/ui';
+import {CustomButton, CustomInput, CustomText, ErrModal} from '@src/shared/ui';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {colors} from '@src/app/styles';
 import {AuthStackProps} from '@src/app/types';
@@ -9,6 +9,8 @@ import {forgotPassSchema} from '@src/app/validations';
 import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './ForgotPassword.styles';
+import {setEmail, useVerifyEmailMutation} from '@src/entities/auth';
+import {useAppDispatch} from '@src/app/store';
 
 export const ForgotPassword = () => {
   const {
@@ -20,11 +22,14 @@ export const ForgotPassword = () => {
   } = useForm({resolver: yupResolver(forgotPassSchema)});
 
   const navigation = useNavigation<AuthStackProps>();
+  const [verifyEmail, {isLoading, error, isError}] = useVerifyEmailMutation();
+  const dispatch = useAppDispatch();
 
   const sendData = (data: {email: string}) => {
-    const {email} = data;
-    console.log('forgot=>', data);
-    navigation.navigate(SCREENS.AUTH_CONFIRM_CODE);
+    dispatch(setEmail(data));
+    verifyEmail(data).then(() =>
+      navigation.navigate(SCREENS.AUTH_CONFIRM_CODE),
+    );
   };
 
   const handleChange = (val: string, name: EAuthForm.EMAIL) => {

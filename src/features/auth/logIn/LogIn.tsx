@@ -21,7 +21,6 @@ export const LogIn = () => {
     handleSubmit,
   } = useForm({resolver: yupResolver(loginSchema)});
   const [loginUser, {error, isLoading}] = useLoginUserMutation();
-  console.log('is Errror =>', error);
   const navigation = useNavigation<AuthStackProps>();
 
   const sendData = (data: ILoginRequest) => {

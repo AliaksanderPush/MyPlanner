@@ -1,5 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {ILoginRequest, IRegistrRequest, ITokens} from '@src/app/types';
+import {
+  ILoginRequest,
+  IRegistrRequest,
+  IRestorePassword,
+  ITokens,
+} from '@src/app/types';
 import {BASE_URL} from '@src/shared/api';
 
 export const authApi = createApi({
@@ -36,6 +41,25 @@ export const authApi = createApi({
         };
       },
     }),
+    verifyEmail: builder.mutation<any, {email: string}>({
+      query(body) {
+        return {
+          url: 'auth/verify-email',
+          method: 'POST',
+          body,
+        };
+      },
+    }),
+    restorePassword: builder.mutation<any, IRestorePassword>({
+      query(body) {
+        return {
+          url: 'auth/update-password',
+          method: 'POST',
+          body,
+        };
+      },
+    }),
+
     refresh: builder.mutation<ITokens, {refreshToken: string}>({
       query(body) {
         return {
@@ -53,4 +77,6 @@ export const {
   useLoginUserMutation,
   useRefreshMutation,
   useLogoutMutation,
+  useVerifyEmailMutation,
+  useRestorePasswordMutation,
 } = authApi;

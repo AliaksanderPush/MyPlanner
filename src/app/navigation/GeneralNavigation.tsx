@@ -6,35 +6,31 @@ import {GeneralStackParams} from '@src/app/types';
 import {SCREENS} from '@src/app/config/screens';
 import {useAppDispatch, useAppSelector} from '../store';
 import {useFetchUserQuery} from '@src/entities/user/model/userApi';
-import {selectAuthInfo, setToken, useRefreshMutation} from '@src/entities/auth';
-import {getTokens, removeToken} from '@src/shared/storage';
+import {selectAuthInfo, setToken} from '@src/entities/auth';
+import {getTokens} from '@src/shared/storage';
+import {LoadingScreen} from '@src/screens';
 
 const HomeScreenStack = createNativeStackNavigator<GeneralStackParams>();
 
 export const GeneralNavigation = (): JSX.Element => {
-  const token = useAppSelector(selectAuthInfo);
+  const {tokens} = useAppSelector(selectAuthInfo);
   const dispatch = useAppDispatch();
-  console.log('token in root=>', token);
 
   const {
     data: user,
     error,
     isLoading,
   } = useFetchUserQuery(undefined, {
-    skip: token === null,
+    skip: tokens === null,
+    refetchOnFocus: true,
   });
 
-  console.log('user in root=>', user);
-  // if (isLoading) {
-  //   return <LoadingScreen />;
-  // }
-
-  if (error) {
-    console.log('err user=>', error);
+  if (isLoading) {
+    return <LoadingScreen />;
   }
 
   useEffect(() => {
-    if (!token) {
+    if (!tokens) {
       (async () => {
         const tokens = await getTokens();
         console.log('res=>', tokens);
@@ -43,7 +39,7 @@ export const GeneralNavigation = (): JSX.Element => {
         }
       })();
     }
-  }, [token]);
+  }, [tokens]);
 
   return (
     <>
@@ -54,7 +50,7 @@ export const GeneralNavigation = (): JSX.Element => {
           headerTitleAlign: 'center',
           headerShadowVisible: false,
         }}>
-        {token && user ? (
+        {tokens && user ? (
           <HomeScreenStack.Screen
             name={SCREENS.DRAWER_SCREEN_STACK}
             component={DrawerScreenStack}

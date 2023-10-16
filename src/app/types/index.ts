@@ -60,3 +60,14 @@ export interface IUser {
   email: string;
   name: string;
 }
+
+export interface ICode {
+  code: number;
+}
+
+export interface IRestorePassword {
+  code: number;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
